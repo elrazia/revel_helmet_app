@@ -7,7 +7,7 @@ class TestApiCall(unittest.TestCase):
         URL = "http://localhost:8080/"
         response = requests.get(url=URL)
         self.assertEqual(response.status_code,200)
-        
+
     def test_image_post_success(self):
         ''' Posts an image to localhost:8080/api endpoint.
             Checks to see if response is a success.'''

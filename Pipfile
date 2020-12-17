@@ -10,9 +10,9 @@ requests = "*"
 fastapi = "*"
 uvicorn = "*"
 python-multipart = "*"
-pillow = "*"
 boto3 = "*"
 awscli = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.9"

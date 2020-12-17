@@ -23,9 +23,9 @@ def hello_world():
 @app.post('/api')
 async def predict(image: UploadFile = File(...)):
     # read image
-    pic = await image.read()
+    image_object = await image.read()
     # run predictions
-    response = client.detect_labels(Image={"Bytes": pic})
+    response = client.detect_labels(Image={"Bytes": image_object})
     return {"code": 'response'}
 
 if __name__ == "__main__" :
