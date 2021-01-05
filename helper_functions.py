@@ -1,3 +1,12 @@
+from textwrap import dedent
+def object_not_found():
+    out = """\n
+          No helmet found in photo provided.
+          Here are some other objects I detected,
+          and how confident I am that they are present: \n
+          """
+    return dedent(out)
+
 def parse_rekognition_labels(response):
     resp = [ ("Label: ", "Confidence(%): ") ]
     for label in response["Labels"]:
@@ -6,6 +15,4 @@ def parse_rekognition_labels(response):
             conf = round(label["Confidence"],2)
             return f"I am {conf}% confident that there is a {obj} in the photo provided."
         resp.append( (label["Name"], str( round( label["Confidence"],2 ) ) ) )
-    return """              No helmet found in photo provided.
-              Here are some other objects I detected,
-              and how confident I am that they are present: \n\n""" + "\n".join(x + " " + y for x,y in resp)
+    return object_not_found() + "\n".join(label_name + " " + confidence_level for label_name,confidence_level in resp)
